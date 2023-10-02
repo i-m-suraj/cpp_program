@@ -1,0 +1,31 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int binary(int n)
+{
+    int start = 0 , end = n , ans = 0;
+    int mid;
+    long long pro;
+    while(start<=end)
+    {
+        mid = start + (end-start)/2;
+        pro = mid*mid;
+        if(pro==n)
+        return mid;
+        if(pro>n)
+        end = mid-1;
+        if(pro<n)
+        {
+            ans = mid;
+            start = mid+1;
+        }
+    }
+    return ans;
+}
+int main()
+{
+    cout<<"enter the value of n"<<endl;
+    int n;
+    cin>>n;
+    cout<< binary(n);
+}
