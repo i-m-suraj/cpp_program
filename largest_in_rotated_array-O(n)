@@ -1,0 +1,28 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+//pivot is either the smallest or the largest element in a rotated array. Here is the program to find the largest pivot element. time >  O(n)
+
+
+int pivot(vector<int>arr,int n)
+{
+    int i = 1;
+    int index = 0;
+    int max = arr[0];
+    for(;i<=n;i++)
+    {
+        if(arr[i]>max)
+        {
+            max = arr[i];
+            index = i;
+        }
+    }    
+    return index;
+}
+int main()
+{
+    vector<int>arr = {16,18,20,22,24,10,12,14,15};
+    int ans = pivot(arr,arr.size()-1);
+    cout<<"largest value  = "<<arr[ans]<<"  at index no = "<<ans<<endl;
+}
