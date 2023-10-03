@@ -1,0 +1,49 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+double prec(int n , int ans, int d)
+{
+    double p;
+    double new_ans = ans;
+    double f = 1;
+    for(int i = 1;i<=d;i++)
+    {
+        f = f/10;
+        p = new_ans;
+        while((p*p)<=n)
+        {
+            new_ans = p;
+            p = p + f;
+        }
+    }
+    return new_ans;
+}
+int root(int n)
+{
+    int start = 0,ans = 0, end = n, mid;
+    long long pro;
+    while(start<=end)
+    {
+        mid = start + (end-start)/2;
+        pro = mid*mid;
+        if(pro<=n){
+            ans = mid;
+            start = mid+1;
+        }
+        if(pro>n)
+            end = mid-1;
+    }
+    return ans;
+}
+int main()
+{
+    int n;
+    cout<<"enter a number"<<endl;
+    cin>>n;
+    int ans = root(n);
+    cout<<"enter the precision"<<endl;
+    int p;
+    cin>>p;
+    double pr = prec(n,ans,p);
+    cout<<"root = "<<pr<<endl;
+}
